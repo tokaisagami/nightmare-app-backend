@@ -21,6 +21,9 @@ RUN gem install bundler && bundle install
 # アプリケーションのソースコードをコピー
 COPY . .
 
+# コンテナ起動時にserver.pidを削除
+RUN rm -f /myapp/tmp/pids/server.pid
+
 # デフォルトのポートを指定
 EXPOSE 3000
 
