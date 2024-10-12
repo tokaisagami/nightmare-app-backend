@@ -16,13 +16,14 @@ WORKDIR $APP_HOME
 COPY Gemfile Gemfile.lock ./
 
 # Bundlerのインストール
-RUN gem install bundler && bundle install
+RUN gem install bundler
+RUN bundle install
 
 # アプリケーションのソースコードをコピー
 COPY . .
 
 # コンテナ起動時にserver.pidを削除
-RUN rm -f /myapp/tmp/pids/server.pid
+RUN rm -f /app/tmp/pids/server.pid
 
 # デフォルトのポートを指定
 EXPOSE 3000
