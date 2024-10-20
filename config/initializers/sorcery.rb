@@ -226,7 +226,7 @@ Rails.application.config.sorcery.configure do |config|
   # config.line.bot_prompt = "normal"
   # config.line.user_info_mapping = {name: 'displayName'}
 
-  
+
   # For information about Discord API
   # https://discordapp.com/developers/docs/topics/oauth2
   # config.discord.key = "xxxxxx"
@@ -267,7 +267,7 @@ Rails.application.config.sorcery.configure do |config|
     # Change default crypted_password attribute.
     # Default: `:crypted_password`
     #
-    # user.crypted_password_attribute_name =
+    user.crypted_password_attribute_name = :password_digest
 
     # What pattern to use to join the password with the salt
     # Default: `""`
@@ -277,7 +277,7 @@ Rails.application.config.sorcery.configure do |config|
     # Change default salt attribute.
     # Default: `:salt`
     #
-    # user.salt_attribute_name =
+    user.salt_attribute_name = nil
 
     # How many times to apply encryption to the password.
     # Default: 1 in test env, `nil` otherwise

@@ -263,6 +263,7 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  jwt
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
