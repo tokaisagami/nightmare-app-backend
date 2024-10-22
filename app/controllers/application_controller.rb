@@ -11,25 +11,12 @@ class ApplicationController < ActionController::API
 
   def authenticate_token
     authenticate_with_http_token do |token, options|
-      puts "Received token: #{token}"
-      secret_key = Rails.application.credentials.secret_key_base || ENV['SECRET_KEY_BASE']
+      puts "Received token: #{token}" # トークンをログに出力
       begin
-        payload, header = JWT.decode(token, secret_key, true, { algorithm: 'HS256' })
-        puts "Payload: #{payload.inspect}" # ここを修正
-        puts "Header: #{header.inspect}" # ここを修正
-        user_id = payload['user_id']
-        @current_user = User.find_by(id: user_id)
-        if @current_user
-          puts "Current User: #{@current_user.inspect}"
-        else
-          puts "User not found for ID: #{user_id}"
-        end
-      rescue JWT::ExpiredSignature
-        puts "Token has expired"
-        render json: { error: 'Token has expired' }, status: :unauthorized
-      rescue JWT::DecodeError => e
-        puts "JWT Decode Error: #{e.message}"
-        render json: { error: 'Invalid token' }, status: :unauthorized
+        payload, header = JWT.decode(token, Rails.application.credentials.secret_key_base)
+        @current_user = User.find_by(id: payload['user_id'])
+      rescue JWT::DecodeError
+        nil
       end
     end
   end
