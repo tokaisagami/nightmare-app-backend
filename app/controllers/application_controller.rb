@@ -12,7 +12,9 @@ class ApplicationController < ActionController::API
   def authenticate_token
     authenticate_with_http_token do |token, options|
       puts "Received token: #{token}" # トークンをログに出力
+      puts "シークレットキー開始" # トークンをログに出力
       secret_key = Rails.application.credentials.secret_key_base || ENV['SECRET_KEY_BASE']
+      puts "シークレットキー成功" # トークンをログに出力
       begin
         payload, header = JWT.decode(token, Rails.application.credentials.secret_key_base)
         puts "Payload: #{payload.inspect}"
