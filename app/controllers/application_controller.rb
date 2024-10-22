@@ -15,8 +15,8 @@ class ApplicationController < ActionController::API
       secret_key = Rails.application.credentials.secret_key_base || ENV['SECRET_KEY_BASE']
       begin
         payload, header = JWT.decode(token, secret_key, true, { algorithm: 'HS256' })
-        puts "Payload: #{payload}"
-        puts "Header: #{header}" # 追加
+        puts "Payload: #{payload.inspect}" # ここを修正
+        puts "Header: #{header.inspect}" # ここを修正
         user_id = payload['user_id']
         @current_user = User.find_by(id: user_id)
         if @current_user
@@ -33,7 +33,7 @@ class ApplicationController < ActionController::API
       end
     end
   end
-  
+
   def not_authenticated
     render json: { error: "You need to log in to access this resource" }, status: :unauthorized
   end
