@@ -15,7 +15,7 @@ class ApplicationController < ActionController::API
       secret_key = Rails.application.credentials.secret_key_base || ENV['SECRET_KEY_BASE']
       begin
         payload, header = JWT.decode(token, secret_key)
-        puts "Payload: #{payload}" # ペイロードの内容をログに出力
+        puts "Payload: #{payload}" # 追加: payloadをログに出力
         user_id = payload['user_id']
         @current_user = User.find_by(id: user_id)
         if @current_user
