@@ -15,7 +15,7 @@ class ApplicationController < ActionController::API
       secret_key = Rails.application.credentials.secret_key_base || ENV['SECRET_KEY_BASE']
       begin
         puts "ペイロードとヘッダー取得開始" # トークンをログに出力
-        payload, header = JWT.decode(token, secret_key, true, { algorithm: 'HS256' }) # アルゴリズムの指定を追加
+        payload, header = JWT.decode(token, secret_key, true, { algorithm: 'HS256' })
         puts "ペイロードとヘッダー取得成功" # トークンをログに出力
         puts "Payload: #{payload.inspect}"
         puts "Header: #{header.inspect}"
