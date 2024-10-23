@@ -9,5 +9,7 @@
 User.create(email: 'user1@example.com', password: 'password')
 User.create(email: 'user2@example.com', password: 'password')
 
-Nightmare.create(user_id: 1, description: '悪夢の説明１', modified_description: '改変後の説明１', ending_type: 'ハッピーエンド', published: true)
-Nightmare.create(user_id: 2, description: '悪夢の説明２', modified_description: '改変後の説明２', ending_type: 'バッドエンド', published: false)
+Nightmare.create(user_id: 1, description: '悪夢の説明１', modified_description: '改変後の説明１', ending_category: 0, published: true)
+Nightmare.create(user_id: 2, description: '悪夢の説明２', modified_description: '改変後の説明２', ending_category: 1, published: false)
+Nightmare.create(user_id: 1, description: 'テスト123456789012345678901234567890123456789012345678901234567890', modified_description: 'テスト123456789012345678901234567890123456789012345678901234567890', ending_category: 0, published: true)
+Nightmare.create(user_id: 2, description: 'テスト123456789012345678901234567890123456789012345678901234567890', modified_description: 'テスト123456789012345678901234567890123456789012345678901234567890', ending_category: 1, published: true)
