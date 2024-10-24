@@ -9,7 +9,7 @@ module Api
       end
 
       def show
-        render json: @nightmare
+        render json: @nightmare.as_json.merge(author: @nightmare.user.name)
       end
 
       def create
