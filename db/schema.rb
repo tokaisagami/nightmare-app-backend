@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_19_085823) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_23_153742) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "nightmares", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "description"
+    t.text "modified_description"
+    t.integer "ending_category", default: 0, null: false
+    t.boolean "published"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
