@@ -4,7 +4,11 @@ Rails.application.routes.draw do
       resources :placeholders, only: [:index]
       resources :users, only: [:create]
       post 'login', to: 'user_sessions#create'
-      resources :nightmares, only: [:index, :show, :create, :update, :destroy]
+      resources :nightmares, only: [:index, :show, :create, :update, :destroy] do
+        collection do
+          post :modify
+        end
+      end
     end
   end
 end
