@@ -160,6 +160,7 @@ GEM
       rack (>= 1.2, < 4)
       snaky_hash (~> 2.0)
       version_gem (~> 1.1)
+    openai (0.3.0)
     pg (1.5.8)
     psych (5.1.2)
       stringio
@@ -264,6 +265,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jwt
+  openai
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
