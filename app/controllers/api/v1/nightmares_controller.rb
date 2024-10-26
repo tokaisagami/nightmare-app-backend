@@ -33,6 +33,13 @@ module Api
         @nightmare.destroy
       end
 
+      def modify
+        nightmare = params[:description]
+        ending_category = params[:ending_category]
+        modified_nightmare = ChatGptService.modify_nightmare(nightmare, ending_category)
+        render json: { modified_nightmare: modified_nightmare }
+      end
+
       private
 
       def set_nightmare
