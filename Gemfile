@@ -8,7 +8,7 @@ gem "rails", "~> 7.0.8", ">= 7.0.8.4"
 gem 'sorcery'
 gem 'rack-cors', require: 'rack/cors'
 gem 'jwt'
-gem 'openai'
+gem 'ruby-openai'
 gem 'dotenv-rails', groups: [:development, :test]
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
