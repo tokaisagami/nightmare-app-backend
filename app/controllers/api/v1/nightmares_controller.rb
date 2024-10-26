@@ -35,8 +35,8 @@ module Api
 
       def modify
         nightmare = params[:description]
-        ending_type = params[:ending_type]
-        modified_nightmare = ChatGptService.modify_nightmare(nightmare, ending_type)
+        ending_category = params[:ending_category]
+        modified_nightmare = ChatGptService.modify_nightmare(nightmare, ending_category)
         render json: { modified_nightmare: modified_nightmare }
       end
 
