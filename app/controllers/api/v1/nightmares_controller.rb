@@ -47,7 +47,7 @@ module Api
       end
 
       def nightmare_params
-        params.require(:nightmare).permit(:user_id, :description, :modified_description, :ending_type, :published)
+        params.require(:nightmare).permit(:user_id, :description, :modified_description, :ending_category, :published)
       end
     end
   end
