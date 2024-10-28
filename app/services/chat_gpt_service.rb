@@ -3,7 +3,7 @@ require 'openai'
 class ChatGptService
   def self.modify_nightmare(nightmare, ending_category)
     client = OpenAI::Client.new(access_token: ENV['OPENAI_API_KEY'])
-    model = 'gpt-4o'  # または 'gpt-4-turbo'
+    model = 'gpt-4o-mini'  # または 'gpt-4o'
 
     # ending_categoryを整数に変換
     ending_category = ending_category.to_i
@@ -30,7 +30,7 @@ class ChatGptService
       parameters: {
         model: model,
         messages: messages,
-        temperature: 0.7,
+        temperature: 0.1,
         max_tokens: 400
       }
     )
