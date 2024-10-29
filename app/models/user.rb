@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :nightmares, dependent: :destroy
   authenticates_with_sorcery!
   has_secure_password
 
