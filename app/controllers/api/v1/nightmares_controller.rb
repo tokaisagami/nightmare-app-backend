@@ -2,6 +2,7 @@ module Api
   module V1
     class NightmaresController < ApplicationController
       before_action :set_nightmare, only: [:show, :update, :destroy]
+      before_action :require_login, only: [:create, :update, :destroy]  # 認証を追加
 
       def index
         @nightmares = Nightmare.joins(:user).select("nightmares.*, users.name as author").where(published: true)
@@ -13,7 +14,7 @@ module Api
       end
 
       def create
-        @nightmare = Nightmare.new(nightmare_params)
+        @nightmare = current_user.nightmares.build(nightmare_params)
         if @nightmare.save
           render json: @nightmare, status: :created
         else
