@@ -4,12 +4,12 @@ one:
   user_id: 1
   description: MyText
   modified_description: MyText
-  ending_type: MyString
+  ending_category: MyString
   published: false
 
 two:
   user_id: 1
   description: MyText
   modified_description: MyText
-  ending_type: MyString
+  ending_category: MyString
   published: false
