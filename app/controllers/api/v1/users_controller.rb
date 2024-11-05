@@ -14,7 +14,8 @@ module Api
 
       def show
         user = User.find(params[:id])
-        render json: { name: user.name, email: user.email }
+        nightmares = user.nightmares.order(created_at: :desc) # すべてのナイトメアを作成日時の降順で取得
+        render json: { name: user.name, email: user.email, nightmares: nightmares }
       end
 
       private
