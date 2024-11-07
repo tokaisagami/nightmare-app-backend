@@ -2,15 +2,20 @@ module Api
   module V1
     class NightmaresController < ApplicationController
       before_action :set_nightmare, only: [:show, :update, :destroy]
-      before_action :require_login, only: [:create, :update, :destroy]  # 認証を追加
+      before_action :require_login, only: [:create, :update, :destroy] # 認証を追加
 
       def index
-        @nightmares = Nightmare.joins(:user).select("nightmares.*, users.name as author").where(published: true)
+        @nightmares = Nightmare.joins(:user).select("nightmares.*, users.name as author").where(published: true).order(created_at: :desc)
         render json: @nightmares
       end
 
       def show
-        render json: @nightmare.as_json.merge(author: @nightmare.user.name)
+        @nightmare = Nightmare.find(params[:id])
+        if @nightmare
+          render json: @nightmare.as_json.merge(author: @nightmare.user.name)
+        else
+          render json: { error: 'Nightmare not found' }, status: :not_found
+        end
       end
 
       def create
