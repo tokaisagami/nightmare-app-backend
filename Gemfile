@@ -10,6 +10,7 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'jwt'
 gem 'ruby-openai'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'config'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -67,6 +68,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'letter_opener', '1.10.0'
 end
 
 group :test do
