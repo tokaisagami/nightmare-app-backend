@@ -297,7 +297,7 @@ DEPENDENCIES
   rails (~> 7.0.8, >= 7.0.8.4)
   ruby-openai
   selenium-webdriver
-  sorcery
+  sorcery (~> 0.17.0)
   sprockets-rails
   stimulus-rails
   turbo-rails
