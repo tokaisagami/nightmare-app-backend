@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
 
   def reset_password_email(user)
     @user = user
-    @url  = edit_api_v1_password_reset_url(user.reset_password_token)
+    @url  = "http://localhost:5173/password-reset?token=#{user.reset_password_token}"
     mail(to: @user.email, subject: 'Your password has been reset')
   end
 end
