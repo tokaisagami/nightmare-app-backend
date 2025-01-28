@@ -14,12 +14,12 @@ module Api
       end
 
       def edit
-        @token = params[:id]
         @user = User.load_from_reset_password_token(params[:id])
 
-        unless @user
+        if @user.blank?
           render json: { error: "Invalid reset token" }, status: :unauthorized
-          return
+        else
+          render json: { message: "Valid token", user_id: @user.id }, status: :ok
         end
       end
 
@@ -32,8 +32,8 @@ module Api
           return
         end
 
-        @user.password_confirmation = params[:user][:password_confirmation]
-        if @user.change_password(params[:user][:password])
+        @user.password_confirmation = params[:password_reset][:password_confirmation]
+        if @user.change_password(params[:password_reset][:password])
           render json: { message: 'Password was successfully updated.' }, status: :ok
         else
           render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
