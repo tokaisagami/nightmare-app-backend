@@ -90,4 +90,23 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Ensure mailer works in production
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+
+  # Add default URL options
+  config.action_mailer.default_url_options = { host: 'nightmare-app.com', protocol: 'https' }
+
+  # SMTP settings for Mailgun
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.mailgun.org',
+    port: 587,
+    domain: ENV['MAILGUN_DOMAIN'],
+    user_name: 'postmaster@' + ENV['MAILGUN_DOMAIN'],
+    password: ENV['MAILGUN_API_KEY'],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 end
