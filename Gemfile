@@ -11,6 +11,8 @@ gem 'jwt'
 gem 'ruby-openai'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'config'
+gem 'mailgun-ruby', '~>1.2.6'
+gem 'dotenv-rails', groups: [:development, :test]
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
