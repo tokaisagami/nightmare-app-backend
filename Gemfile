@@ -5,10 +5,13 @@ ruby "3.1.4"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8", ">= 7.0.8.4"
-gem 'sorcery'
+gem 'sorcery', '~> 0.17.0'
 gem 'rack-cors', require: 'rack/cors'
 gem 'jwt'
 gem 'ruby-openai'
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'config'
+gem 'mailgun-ruby', '~>1.2.6'
 gem 'dotenv-rails', groups: [:development, :test]
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
@@ -67,6 +70,8 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'letter_opener'
+  gem 'letter_opener_web'
 end
 
 group :test do

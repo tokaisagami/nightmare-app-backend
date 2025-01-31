@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
   namespace :api do
     namespace :v1 do
       resources :placeholders, only: [:index]
-      resources :users, only: [:create, :show] # :showアクションを追加
+      resources :users, only: [:create, :show, :update] # :updateアクションを追加
+      resources :password_resets, only: [:create, :edit, :update]
       post 'login', to: 'user_sessions#create'
       resources :nightmares, only: [:index, :show, :create, :update, :destroy] do
         collection do
